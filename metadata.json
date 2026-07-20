@@ -1,0 +1,6 @@
+{
+  "name": "Conversor de Texto em Fala",
+  "description": "Conversor de texto em fala de alta fidelidade usando a tecnologia Gemini 3.1 Flash TTS com ajuste de tom por tags, sotaques regionais do Brasil, relatórios analíticos de uso e favoritos criptografados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -794,22 +794,23 @@ export default function App() {
       <div className="max-w-6xl mx-auto px-4 py-6 md:py-8">
         
         {/* Navigation / Header */}
-        <header className="flex items-center justify-between border-b border-slate-800/20 dark:border-slate-800 pb-5 mb-8">
-          <div className="flex items-center gap-3">
+        <header className="flex items-center justify-between gap-3 border-b border-slate-800/20 dark:border-slate-800 pb-5 mb-8">
+          <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-xl bg-[#9146FF] flex items-center justify-center text-white shadow-lg shadow-[#9146FF]/30 shrink-0">
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5.5 h-5.5 text-white">
                 <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
               </svg>
             </div>
-            <div>
-              <h1 className="text-xl font-extrabold tracking-tight">Twitch.tv/uauryan</h1>
-              <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-slate-500"} font-medium`}>Github.com/offryan</p>
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-xl font-extrabold tracking-tight truncate">Twitch.tv/uauryan</h1>
+              <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-slate-500"} font-medium truncate`}>Github.com/offryan</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Connection state */}
-            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
+            {/* No celular o selo só aparece offline, para sobrar espaço para o título */}
+            <div className={`${isOnline ? "hidden sm:flex" : "flex"} items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
               isOnline 
                 ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
                 : "bg-rose-500/10 text-rose-400 border border-rose-500/20"
@@ -888,14 +889,14 @@ export default function App() {
         </header>
 
         {/* Tab Selection */}
-        <div className={`flex items-center gap-1.5 p-1 border rounded-2xl mb-8 max-w-xl ${
+        <div className={`flex items-center gap-1 sm:gap-1.5 p-1 border rounded-2xl mb-8 max-w-xl ${
           theme === "dark" 
             ? "bg-slate-900 border-slate-800/80" 
             : "bg-slate-200/50 border-slate-200"
         }`}>
           <button
             onClick={() => setActiveTab("home")}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-xl transition-all ${
+            className={`flex-1 min-w-0 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 sm:px-3 text-[10px] sm:text-xs font-semibold rounded-xl transition-all ${
               activeTab === "home" 
                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" 
                 : (theme === "dark" ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -907,7 +908,7 @@ export default function App() {
           
           <button
             onClick={() => setActiveTab("favorites")}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-xl transition-all ${
+            className={`flex-1 min-w-0 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 sm:px-3 text-[10px] sm:text-xs font-semibold rounded-xl transition-all ${
               activeTab === "favorites" 
                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" 
                 : (theme === "dark" ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -919,7 +920,7 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab("pronunciation")}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-xl transition-all ${
+            className={`flex-1 min-w-0 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 sm:px-3 text-[10px] sm:text-xs font-semibold rounded-xl transition-all ${
               activeTab === "pronunciation" 
                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" 
                 : (theme === "dark" ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -931,7 +932,7 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-xl transition-all ${
+            className={`flex-1 min-w-0 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 sm:px-3 text-[10px] sm:text-xs font-semibold rounded-xl transition-all ${
               activeTab === "analytics" 
                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" 
                 : (theme === "dark" ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -943,7 +944,7 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab("widgets")}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-xl transition-all ${
+            className={`flex-1 min-w-0 flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 sm:px-3 text-[10px] sm:text-xs font-semibold rounded-xl transition-all ${
               activeTab === "widgets" 
                 ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20" 
                 : (theme === "dark" ? "text-slate-400 hover:text-slate-200" : "text-slate-600 hover:text-slate-900")
@@ -1120,7 +1121,7 @@ export default function App() {
                                         : "bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300")
                                 }`}
                               >
-                                Sotaque {acc.charAt(0).toUpperCase() + acc.slice(1)}
+                                <span className="hidden sm:inline">Sotaque </span>{acc.charAt(0).toUpperCase() + acc.slice(1)}
                               </button>
                             ))}
                           </div>
@@ -1407,7 +1408,7 @@ export default function App() {
                           <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Velocidade</span>
                           <span className="text-xs font-mono font-bold text-indigo-500">{playbackSpeed.toFixed(2)}x</span>
                         </div>
-                        <div className="grid grid-cols-5 gap-1">
+                        <div className="grid grid-cols-6 gap-1">
                           {[0.5, 0.75, 1.0, 1.25, 1.5, 2.0].map((spd) => (
                             <button
                               key={spd}
